@@ -1,4 +1,4 @@
-package com.example.dmtodotesting;
+package todotesting;
 
 import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -34,14 +34,16 @@ public class ToDoPageTest {
     }
 
     @Test
-    public void createTaskAndCheckName() {
+    @DisplayName("Task creation and text checking")
+    public void taskCreationAndTextChecking() {
 
         Task task = ToDoPage.createRandomTask(10);
-        task.label.shouldHave(text(task.tText));
+        task.label.shouldHave(text(task.text));
     }
 
     @Test
-    public void deleteTask() {
+    @DisplayName("Task deleting check")
+    public void taskDeletingCheck() {
 
         Task task = ToDoPage.createRandomTask(12);
         task.deleteTaskButton.shouldNotBe(visible);
@@ -53,7 +55,8 @@ public class ToDoPageTest {
     }
 
     @Test
-    public void changeTaskStatus() {
+    @DisplayName("Checking the task status change")
+    public void checkingTheTaskStatusChange() {
 
         Task task = ToDoPage.createTask("Simple Task");
 
@@ -62,6 +65,7 @@ public class ToDoPageTest {
     }
 
     @Test
+    @DisplayName("Checking that only active tasks are visible")
     public void checkingThatOnlyActiveTasksAreVisible() {
 
         Task task1 = ToDoPage.createRandomTask(10);
@@ -75,6 +79,7 @@ public class ToDoPageTest {
     }
 
     @Test
+    @DisplayName("Checking that only completed tasks are visible")
     public void checkingThatOnlyCompletedTasksAreVisible() {
 
         Task task1 = ToDoPage.createRandomTask(10);
@@ -88,7 +93,8 @@ public class ToDoPageTest {
     }
 
     @Test
-    public void checkThatAllTasksCompleted() {
+    @DisplayName("Checking that all tasks are completed")
+    public void checkingThatAllTasksAreCompleted() {
 
         Task task1 = ToDoPage.createRandomTask(10);
         Task task2 = ToDoPage.createRandomTask(10);
@@ -100,6 +106,7 @@ public class ToDoPageTest {
     }
 
     @Test
+    @DisplayName("Checking that all completed tasks have been deleted")
     public void checkingThatAllCompletedTasksHaveBeenDeleted() {
 
         Task task1 = ToDoPage.createRandomTask(10);

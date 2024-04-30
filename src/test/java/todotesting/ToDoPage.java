@@ -1,9 +1,7 @@
-package com.example.dmtodotesting;
+package todotesting;
 
 import com.codeborne.selenide.SelenideElement;
 import org.apache.commons.lang3.RandomStringUtils;
-
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 // page_url = https://todomvc.com/examples/react/dist/
@@ -15,20 +13,20 @@ public class ToDoPage {
     public static SelenideElement footerButtonCompleted = $x("//*[@href='#/completed']");
     public static SelenideElement footerButtonClearCompleted = $x("//*[@class='clear-completed']");
 
-    public static Task createTask(String taskText) {
+    public static Task createTask(String text) {
 
-        ToDoPage.todoInput.setValue(taskText);
+        ToDoPage.todoInput.setValue(text);
         ToDoPage.todoInput.pressEnter();
 
-        return new Task(taskText);
+        return new Task(text);
     }
 
-    public static Task createRandomTask(int taskTextLength) {
+    public static Task createRandomTask(int textLength) {
 
-        String taskText = RandomStringUtils.randomAlphanumeric(taskTextLength);
-        ToDoPage.todoInput.setValue(taskText);
+        String text = RandomStringUtils.randomAlphanumeric(textLength);
+        ToDoPage.todoInput.setValue(text);
         ToDoPage.todoInput.pressEnter();
 
-        return new Task(taskText);
+        return new Task(text);
     }
 }
